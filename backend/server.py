@@ -21,6 +21,6 @@ async def root():
 @app.post("/request")
 async def code_review(item: Item):
     if item.command == "text-review":
-        rewied_code = AIInterection.answer_from_mistral(API_KEY, f"Дай код ревью этого кода:\n{item.data}(код закодирован в base64).")
+        rewied_code = AIInterection.answer_from_mistral(API_KEY, f"Дай код ревью этого кода:\n{item.data}.")
         print(rewied_code)
     return {"answer": rewied_code}
