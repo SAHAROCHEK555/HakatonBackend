@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from pydantic import BaseModel, Base64Bytes, Base64Str
-import pybase64
+from fastapi.middleware.cors import CORSMiddleware
 from ai.AIInterection import AIInterection
 from config import API_KEY
 
@@ -11,6 +11,15 @@ app = FastAPI()
 class Item(BaseModel):
     command: str
     data: Base64Str
+
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["GET", "POST", "OPTIONS"],
+    allow_headers=["*"],
+)
 
 
 @app.get("/")
