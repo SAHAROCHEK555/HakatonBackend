@@ -1,8 +1,9 @@
+import fs from "fs";
 import {Base64} from "js-base64";
 
 let codeRequest = {
-    command: "text-review",
-    data: Base64.encode("print(hello world)\n\nuser_input = input\n\nprint(user_input)"),
+    command: "code-review",
+    data: Base64.encode(fs.readFileSync("./new.py")),
 };
 
 let request = await fetch("http://localhost:8000/request", {
