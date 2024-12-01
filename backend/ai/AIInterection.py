@@ -23,5 +23,5 @@ class AIInterection:
             reply = response.json()["choices"][0]["message"]["content"]
             return reply
         else:
-            while response.status_code != 200:
-                response = requests.post("http://84.201.152.196:8020/v1/completions", headers=headers, json=data)
+            raise Exception(f"Error: {response.status_code}, {response.text}")
+        
